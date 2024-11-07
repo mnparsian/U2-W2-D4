@@ -1,0 +1,45 @@
+@import "./partial/bootstrap_overrides";
+
+// esercizio 1
+@function font-size-value($base-size, $scale, $index) {
+    @return $base-size * pow($scale, $index - 1);
+  }
+  
+  
+  @mixin generate-font-size-classes($start, $end, $base-size: 1rem, $scale: 0.75) {
+    @for $i from $start through $end {
+      .fs-#{$i} {
+        font-size: font-size-value($base-size, $scale, $i - 6) !important;
+      }
+    }
+  }
+  
+  
+  @include generate-font-size-classes(7, 10, $base-size: 1rem, $scale: 0.75);
+
+  // esercizio 2
+@mixin generate-border-classes($start, $end, $base-width: 1px) {
+    @for $i from $start through $end {
+      .border-#{$i} {
+        border-width: $base-width * $i !important;
+      }
+    }
+  }
+  
+  
+  @include generate-border-classes(6, 10, $base-width: 1px);
+
+  //
+  $btn-padding-y: 0.75rem !default;
+$btn-padding-x: 2.5rem !default;
+
+// Imposta il gutter di default a 0.5rem
+$grid-gutter-width: 0.5rem !default;
+
+
+// 
+$bg-color: $dark !default;
+$color: $info !default;
+
+// 
+$border-radius: 2rem !default;
